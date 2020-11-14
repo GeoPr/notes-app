@@ -1,0 +1,122 @@
+.notes {
+  margin: 50px 0px 0px 0px;
+  display: grid;
+  row-gap: 10px;
+  li {
+    padding: 20px;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #000;
+    border-radius: 10px;
+    transition: all 0.5s ease 0s;
+    &._active {
+      p::before {
+        width: 100%;
+      }
+    }
+    div {
+      display: flex;
+      align-items: center;
+      label {
+				cursor: pointer;
+        input {
+          position: absolute;
+          width: 0;
+          height: 0;
+          opacity: 0;
+          visibility: hidden;
+					z-index: -1;
+					&:checked + span::after {
+						transform: translateX(23px);
+					}
+        }
+        span {
+          position: relative;
+          display: flex;
+          align-items: center;
+          padding: 0px 0px 0px 50px;
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 40px;
+            height: 16px;
+            border-radius: 50px;
+            background: gray;
+          }
+          &::after {
+            content: '';
+            position: absolute;
+            left: 3px;
+            transition: all 0.5s ease 0s;
+            border-radius: 50%;
+            width: 10px;
+						height: 10px;
+						background: green;
+          }
+        }
+      }
+      p {
+        display: flex;
+        align-items: center;
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          transition: all 0.5s ease 0s;
+          width: 0;
+          height: 2px;
+          background: red;
+        }
+      }
+    }
+    button {
+      height: 40px;
+      border-radius: 10px;
+      background: rgb(160, 0, 0);
+      padding: 0px 20px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.note-enter {
+  opacity: 0;
+}
+.note-enter-active {
+  transform-origin: top;
+  transform-style: preserve-3d;
+  animation: noteEnter 0.5s linear 0s infinite alternate;
+}
+.note-exit {
+  opacity: 1;
+}
+.note-exit-active {
+  animation: noteExit 0.5s linear 0s infinite alternate;
+}
+
+@keyframes noteExit {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  50% {
+    transform: translate(100px, 0px);
+  }
+  100% {
+    transform: translate(-100%, 0px);
+    opacity: 0;
+  }
+}
+@keyframes noteEnter {
+  0% {
+    opacity: 0;
+    transform: perspective(600px) rotateX(-90deg);
+  }
+  100% {
+    transform: perspective(600px) rotateX(0deg);
+    opacity: 1;
+  }
+}

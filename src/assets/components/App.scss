@@ -1,0 +1,11 @@
+.sc {
+  background: #333;
+  // .sc__container
+  &__container {
+  }
+  // .sc__body
+  &__body {
+    min-height: 100vh;
+    padding: 100px 0px;
+  }
+}
